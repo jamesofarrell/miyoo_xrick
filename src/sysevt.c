@@ -67,15 +67,15 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
       SETBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (key == SDLK_TAB) {
+    else if (key == SDLK_SPACE || key == SDLK_LSHIFT) {
       SETBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (key == SDLK_ESCAPE) {
+    else if (key == SDLK_RCTRL) {
       SETBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (key == SDLK_LCTRL) {
+    else if (key == SDLK_LCTRL || key == SDLK_LALT) {
       SETBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }
@@ -100,7 +100,7 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
     }
 #endif
 #ifdef ENABLE_CHEATS
-    else if (key == SDLK_F7) {
+    else if (key == SDLK_ESCAPE) {
       game_toggleCheat(1);
     }
     else if (key == SDLK_F8) {
@@ -133,15 +133,15 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
       CLRBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (key == SDLK_TAB) {
+    else if (key == SDLK_SPACE || key == SDLK_LSHIFT) {
       CLRBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (key == SDLK_ESCAPE) {
+    else if (key == SDLK_RCTRL) {
       CLRBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (key == SDLK_LCTRL) {
+    else if (key == SDLK_LCTRL || key == SDLK_LALT) {
       CLRBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }

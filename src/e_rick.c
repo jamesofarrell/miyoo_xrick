@@ -335,8 +335,8 @@ e_rick_action2(void)
    * NOT FIRING
    */
  firing_not:
-  if (control_status & CONTROL_UP) {  /* jump or climb */
-    if (env1 & MAP_EFLG_CLIMB) {  /* climb */
+  if (control_status & CONTROL_UP || control_status & CONTROL_END) {  /* jump or climb */
+    if (env1 & MAP_EFLG_CLIMB && !(control_status & CONTROL_END)) {  /* climb */
       E_RICK_STSET(E_RICK_STCLIMB);
       return;
     }

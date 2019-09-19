@@ -11,7 +11,7 @@
 # You must not remove this notice, or any other, from this software.
 #
 
-#
+
 # Vars
 #
 
@@ -19,6 +19,17 @@ SDLVERSION=$(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-
 ROOTDIR=
 #$(shell pwd)
 TARGET=$(shell uname -s | tr [a-z] [A-Z])
+
+PROFILE= APPLY
+
+OPTIMISE= -D_ZAURUS -O2 -ffast-math -fstrict-aliasing -fomit-frame-pointer -ftree-vectorize -funroll-all-loops -fpeel-loops -ftracer -funswitch-loops -finline-functions
+
+ifeq ($(PROFILE), YES)
+OPTIMISE                += -fprofile-generate=/mnt/profile
+else ifeq ($(PROFILE), APPLY)
+OPTIMISE                += -fprofile-use -fbranch-probabilities
+endif
+
 
 #
 # Config
@@ -66,14 +77,14 @@ XOBJ=xrick.res
 endif
 
 #
-# Rules
+# Rules
 #
 
 all:
 	@echo "ROOTDIR=" > Makefile.global
 	@echo "XOBJ=$(XOBJ)" >> Makefile.global
-	@echo "CFLAGS=-g -ansi -pedantic -Wall -W -O2 -I $(ROOTDIR)/include $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --cflags)" >> Makefile.global
-	@echo "LDFLAGS=-lz $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --libs)" >> Makefile.global
+	@echo "CFLAGS=-g -ansi -pedantic -Wall -W -O2 -I $(ROOTDIR)/include $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --cflags) $(OPTIMISE)" >> Makefile.global
+	@echo "LDFLAGS=-lz $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --libs) -fprofile-arcs" >> Makefile.global
 	@echo "CC=arm-miyoo-linux-uclibcgnueabi-gcc" >> Makefile.global
 	@echo "CPP=arm-miyoo-linux-uclibcgnueabi-gcc -E" >> Makefile.global
 	$(MAKE) -C src all

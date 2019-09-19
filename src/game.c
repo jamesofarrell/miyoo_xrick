@@ -617,10 +617,10 @@ init(void)
 static void
 play0(void)
 {
-  if (control_status & CONTROL_END) {  /* request to end the game */
-    game_state = GAMEOVER;
+  /*if (control_status & CONTROL_END) {  /* request to end the game */
+  /*  game_state = GAMEOVER;
     return;
-  }
+  }*/
 
   if (control_last == CONTROL_EXIT) {  /* request to exit the game */
     game_state = EXIT;
