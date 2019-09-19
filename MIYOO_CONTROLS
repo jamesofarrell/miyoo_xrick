@@ -1,0 +1,5 @@
+MOVE:D-PAD
+FIRE:A,B  (hold a, then press a direction for action, left/right=prod with stick, up=shoot bullet, down=set dynamite)
+JUMP:up,Y.X
+PAUSE:left-shoulder
+EXIT:R/Menu
