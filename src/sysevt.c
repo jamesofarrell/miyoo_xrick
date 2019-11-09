@@ -104,7 +104,7 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
     }
 #endif
 #ifdef ENABLE_CHEATS
-    else if (key == SDLK_ESCAPE) {
+    else if (key == SDLK_BACKSPACE) {
       game_toggleCheat(1);
     }
     else if (key == SDLK_F8) {
