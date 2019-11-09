@@ -15,12 +15,12 @@
 # Vars
 #
 
-SDLVERSION=$(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --version 2>/dev/null)
+SDLVERSION=$(shell sdl-config --version 2>/dev/null)
 ROOTDIR=
 #$(shell pwd)
 TARGET=$(shell uname -s | tr [a-z] [A-Z])
 
-PROFILE= APPLY
+PROFILE=NO
 
 OPTIMISE= -D_ZAURUS -O2 -ffast-math -fstrict-aliasing -fomit-frame-pointer -ftree-vectorize -funroll-all-loops -fpeel-loops -ftracer -funswitch-loops -finline-functions
 
@@ -85,8 +85,8 @@ all:
 	@echo "XOBJ=$(XOBJ)" >> Makefile.global
 	@echo "CFLAGS=-g -ansi -pedantic -Wall -W -O2 -I $(ROOTDIR)/include $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --cflags) $(OPTIMISE)" >> Makefile.global
 	@echo "LDFLAGS=-lz $(shell /opt/miyoo/arm-miyoo-linux-uclibcgnueabi/sysroot/usr/bin/sdl-config --libs) -fprofile-arcs" >> Makefile.global
-	@echo "CC=arm-miyoo-linux-uclibcgnueabi-gcc" >> Makefile.global
-	@echo "CPP=arm-miyoo-linux-uclibcgnueabi-gcc -E" >> Makefile.global
+	@echo "CC=mipsel-gcw0-linux-uclibc-gcc" >> Makefile.global
+	@echo "CPP=mipsel-gcw0-linux-uclibc-gcc -E" >> Makefile.global
 	$(MAKE) -C src all
 
 clean:

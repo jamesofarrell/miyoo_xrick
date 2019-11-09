@@ -38,6 +38,20 @@ typedef struct {
   U8 name[10];
 } hscore_t;
 
+typedef enum {
+#ifdef ENABLE_DEVTOOLS
+  DEVTOOLS,
+#endif
+  XRICK,
+  INIT_GAME, INIT_BUFFER,
+  INTRO_MAIN, INTRO_MAP,
+  PAUSE_PRESSED1, PAUSE_PRESSED1B, PAUSED, PAUSE_PRESSED2,
+  PLAY0, PLAY1, PLAY2, PLAY3,
+  CHAIN_SUBMAP, CHAIN_MAP, CHAIN_END,
+  SCROLL_UP, SCROLL_DOWN,
+  RESTART, GAMEOVER, GETNAME, EXIT
+} game_state_t;
+
 extern U8 game_lives;      /* lives counter */
 extern U8 game_bombs;      /* bombs counter */
 extern U8 game_bullets;    /* bullets counter */
@@ -60,6 +74,8 @@ extern rect_t *game_rects; /* rectangles to redraw at each frame */
 extern void game_run(void);
 extern void game_setmusic(char *name, U8 loop);
 extern void game_stopmusic(void);
+
+extern game_state_t game_state;
 
 
 #ifdef ENABLE_CHEATS

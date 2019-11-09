@@ -34,23 +34,6 @@
 #endif
 
 
-/*
- * local typedefs
- */
-typedef enum {
-#ifdef ENABLE_DEVTOOLS
-  DEVTOOLS,
-#endif
-  XRICK,
-  INIT_GAME, INIT_BUFFER,
-  INTRO_MAIN, INTRO_MAP,
-  PAUSE_PRESSED1, PAUSE_PRESSED1B, PAUSED, PAUSE_PRESSED2,
-  PLAY0, PLAY1, PLAY2, PLAY3,
-  CHAIN_SUBMAP, CHAIN_MAP, CHAIN_END,
-  SCROLL_UP, SCROLL_DOWN,
-  RESTART, GAMEOVER, GETNAME, EXIT
-} game_state_t;
-
 
 /*
  * global vars
@@ -117,11 +100,12 @@ sound_t *WAV_ENTITY[10];
 #endif
 
 
+game_state_t game_state;
+
 /*
  * local vars
  */
 static U8 isave_frow;
-static game_state_t game_state;
 #ifdef ENABLE_SOUND
 static sound_t *music_snd;
 #endif

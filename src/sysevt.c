@@ -63,7 +63,7 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
       SETBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (key == SDLK_BACKSPACE) {
+    else if (key == SDLK_RETURN) {
       SETBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
@@ -87,15 +87,19 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
     }
     else if (key == SDLK_F3) {
       sysvid_zoom(+1);
+    } else if (key == SDLK_HOME) {
+      game_state = EXIT;
+    } else if (key == SDLK_ESCAPE) {
+      game_state = GAMEOVER;
     }
 #ifdef ENABLE_SOUND
-    else if (key == SDLK_RETURN) {
+    else if (key == SDLK_F3) {
       syssnd_toggleMute();
     }
-    else if (key == SDLK_LSHIFT) {
+    else if (key == SDLK_F4) {
       syssnd_vol(-1);
     }
-    else if (key == SDLK_SPACE) {
+    else if (key == SDLK_F5) {
       syssnd_vol(+1);
     }
 #endif
@@ -129,7 +133,7 @@ processEvent()	/* #dingoo-a320 - keys renamed so input does the right things */
       CLRBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (key == SDLK_BACKSPACE) {
+    else if (key == SDLK_RETURN) {
       CLRBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
